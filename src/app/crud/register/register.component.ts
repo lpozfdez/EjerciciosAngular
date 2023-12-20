@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'crud-register',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
+  constructor(private fb: FormBuilder) {
+
+  }
+
+
+
+
 
 }
