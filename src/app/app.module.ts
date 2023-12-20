@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DisplayModule } from './display/display.module';
 import { SharedModule } from './shared/shared.module';
 import { ComunicationModule } from './comunication/comunication.module';
+import { CrudModule } from './crud/crud.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ComunicationModule } from './comunication/comunication.module';
     AppRoutingModule,
     DisplayModule,
     SharedModule,
-    ComunicationModule
+    ComunicationModule,
+    CrudModule
   ],
   providers: [],
   bootstrap: [AppComponent]

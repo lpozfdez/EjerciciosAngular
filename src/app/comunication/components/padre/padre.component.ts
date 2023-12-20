@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, fromEvent, of, tap } from 'rxjs';
+import { Subject } from 'rxjs';
 import { MessageService } from '../../services/message.service';
 
 @Component({

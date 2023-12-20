@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DisplayComponent } from './display/components/display/display.component';
 import { LayoutComponent } from './comunication/components/layout/layout.component';
+import { CrudLayoutComponent } from './crud/layout/crud-layout.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'communication' ,
-    //loadChildren: () => import('./comunication/comunication.module').then(m => m.ComunicationModule)
     component: LayoutComponent
+  },
+  {
+    path: 'crud' ,
+    component: CrudLayoutComponent
   },
   {
     path: '**',
