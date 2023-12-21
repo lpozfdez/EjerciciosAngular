@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./crud-layout.component.css']
 })
 export class CrudLayoutComponent {
-
 }

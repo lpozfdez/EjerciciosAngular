@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CrudLayoutComponent } from './layout/crud-layout.component';
 import { RegisterComponent } from './register/register.component';
 import { DataTableComponent } from './data-table/data-table.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,9 @@ import { DataTableComponent } from './data-table/data-table.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class CrudModule { }

@@ -1,60 +1,71 @@
 <h4>Formulario de registro</h4>
 
-  <form action="" class="col">
+  <form class="col" [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
     <!-- Name -->
     <div class="mb-3 col">
       <label class="col-sm-9 col-form-label" for="">Nombre de usuario</label>
-      <input class="col-sm-9" type="text">
-      <span class="form-text text-danger" ></span>
+      <input class="col-sm-9" type="text" formControlName="name">
+      <span class="form-text text-danger" *ngIf="isValidField('name')" >Este campo es requerido</span>
     </div>
 
     <!-- Password -->
     <div class="mb-3 col">
       <label class="col-sm-9 col-form-label" for="">Contraseña</label>
-      <input class="col-sm-9" type="text" >
-      <span class="form-text text-danger" ></span>
+      <input class="col-sm-9" type="password" formControlName="password">
+      <span class="form-text text-danger" *ngIf="isValidField('password')" >Las contraseña debe tener al menos 6 caracteres</span>
     </div>
 
     <!-- Password2 -->
     <div class="mb-3 col">
       <label class="col-sm-9 col-form-label" for="">Confirma la Contraseña</label>
-      <input class="col-sm-9" type="text" >
-      <span class="form-text text-danger" ></span>
+      <input class="col-sm-9" type="password" formControlName="password2">
+      <span class="form-text text-danger" *ngIf="isValidField('password2')">Las contraseñas deben de ser iguales</span>
     </div>
 
     <!-- Email -->
     <div class="mb-3 col">
       <label class="col-sm-9 col-form-label" for="">Correo</label>
-      <input class="col-sm-9" type="text" >
-      <span class="form-text text-danger" ></span>
+      <input class="col-sm-9" type="email" formControlName="email">
+      <span class="form-text text-danger" *ngIf="isValidField('email')" >Introduzca un email válido</span>
     </div>
 
-    <!-- Nombre -->
+    <!-- Ofertas -->
     <div class="mb-3 col form-check">
       <input class="form-check-input"
       type="checkbox"
       id="flexCheckDefault"
-      formControlName="ofertas">
+      formControlName="offerts">
       <label class="form-check-label" for="flexCheckDefault">
         Envíame ofertas promocionales
       </label>
     </div>
 
-    <!-- Email -->
+    <!-- País -->
     <div class="mb-3 col">
       <label class="col-sm-9 col-form-label" for="">País</label>
-      <select class="form-control col-sm-9"></select>
-      <span class="form-text text-danger" ></span>
+      <select class="form-control col-sm-9" formControlName="country" >
+        <option value="">--Selecciona un país</option>
+        <option *ngFor="let country of allCountries" [value]="country"> {{country}} </option>
+      </select>
+      <span class="form-text text-danger" *ngIf="isValidField('country')" >Este campo es requerido</span>
     </div>
 
     <!-- Ciudad -->
     <div class="mb-3 col">
       <label class="col-sm-9 col-form-label" for="">Ciudad</label>
-      <input class="col-sm-9" type="text" >
-      <span class="form-text text-danger" ></span>
+      <input class="col-sm-9" type="text" formControlName="city">
+      <span class="form-text text-danger" *ngIf="isValidField('city')">Este campo es requerido</span>
     </div>
+
+    <button class="btn btn-primary" type="submit">Crear</button>
 
   </form>
 
+
+<!-- <h1>Formulario:</h1>
+
+<code> {{myForm.value| json}} </code>
+
+<p>Is form valid: {{myForm.valid}}</p> -->
 

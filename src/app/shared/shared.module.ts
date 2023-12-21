@@ -12,9 +12,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+
+
   ],
   exports: [
-    SidebarComponent
+    SidebarComponent,
+
   ]
 })
 export class SharedModule { }
