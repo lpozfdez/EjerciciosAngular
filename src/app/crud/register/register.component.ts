@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { CountriesService } from 'src/app/shared/services/countries.service';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 import { User } from '../interfaces/user.interface';
-import { Name } from '../interfaces/country.interface';
 
 @Component({
   selector: 'crud-register',
@@ -14,7 +13,7 @@ import { Name } from '../interfaces/country.interface';
 export class RegisterComponent implements OnInit{
 
   public allCountries?: string[];
-  public dataUser?: Subject<User>;
+  @Output() public dataUser?: Subject<User>;
 
   public myForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
@@ -54,6 +53,7 @@ export class RegisterComponent implements OnInit{
       return;
     }
 
+    //Construimos en user con los valores del formulario
     const user: User = {
       name: this.myForm.value['name'],
       password: this.myForm.value['password'],
@@ -65,9 +65,11 @@ export class RegisterComponent implements OnInit{
 
     console.log( user );
 
+    //Limpiamos el formulario
     this.myForm.reset();
 
-    this.dataUser = new Subject<User>();
+    //Añadimos el user para emitirlo en el subject
+    this.dataUser?.next(user);
 
   }
 

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'crud-data-table',
@@ -6,10 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent {
-
-  @Input() public formsValues?: Object = {}
-
-
 
 
 
