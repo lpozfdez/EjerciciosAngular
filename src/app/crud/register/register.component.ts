@@ -4,6 +4,7 @@ import { Subject, of } from 'rxjs';
 import { CountriesService } from 'src/app/shared/services/countries.service';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 import { User } from '../interfaces/user.interface';
+import { DataTransferService } from 'src/app/shared/services/dataTransfer.service';
 
 @Component({
   selector: 'crud-register',
@@ -13,7 +14,6 @@ import { User } from '../interfaces/user.interface';
 export class RegisterComponent implements OnInit{
 
   public allCountries?: string[];
-  @Output() public dataUser?: Subject<User>;
 
   public myForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit{
     ]
   });
 
-  constructor(private fb: FormBuilder, private countriesServ:CountriesService, private validatorsServ: ValidatorsService ) {}
+  constructor(private fb: FormBuilder, private countriesServ:CountriesService, private validatorsServ: ValidatorsService, private dataServ: DataTransferService ) {}
 
   ngOnInit(): void {
     this.getCountries();
@@ -63,13 +63,12 @@ export class RegisterComponent implements OnInit{
       city: this.myForm.value['city'],
     };
 
-    console.log( user );
+    console.log(user)
+
+    this.dataServ.sendData(user);
 
     //Limpiamos el formulario
     this.myForm.reset();
-
-    //Añadimos el user para emitirlo en el subject
-    this.dataUser?.next(user);
 
   }
 

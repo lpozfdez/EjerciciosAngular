@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject } from 'rxjs';
-import { User } from '../interfaces/user.interface';
+import { DataTransferService } from 'src/app/shared/services/dataTransfer.service';
 
 @Component({
   selector: 'crud-layout',
@@ -9,11 +8,7 @@ import { User } from '../interfaces/user.interface';
 })
 export class CrudLayoutComponent {
 
-  //public newUser?: Subject<User>;
+  constructor( private dataServ: DataTransferService ){}
 
-  getNewUser( user: Subject<User> ){
-    if( !user ) return;
-    user.subscribe()
-  }
 
 }

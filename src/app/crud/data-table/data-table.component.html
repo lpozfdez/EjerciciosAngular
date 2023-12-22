@@ -12,8 +12,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <!-- <td *ngFor="let item of formsValues" > {{ item }} </td> -->
+      <tr *ngFor="let user of users" >
+        <td> {{ user.name }} </td>
+        <td> {{ user.email }} </td>
+        <td>
+          <span *ngIf="user.suscription; else noSubscriptionContent">
+            <i class="fas fa-check"></i>
+          </span>
+          <ng-template #noSubscriptionContent></ng-template>
+        </td>
+        <td> {{ user.country }} </td>
+        <td> {{ user.city }} </td>
+        <td> <i class="fas fa-pencil-alt"></i><i class="fas fa-trash-alt"></i></td>
       </tr>
     </tbody>
 
