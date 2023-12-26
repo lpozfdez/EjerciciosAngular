@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { DataTransferService } from 'src/app/shared/services/dataTransfer.service';
 
@@ -7,31 +7,50 @@ import { DataTransferService } from 'src/app/shared/services/dataTransfer.servic
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent implements OnInit {
+export class DataTableComponent implements OnInit, OnDestroy {
 
   public users: User[] = [];
 
   constructor( private dataServ: DataTransferService ){}
 
+  ngOnDestroy(): void {
+    this.users = [];
+  }
+
   ngOnInit(): void {
-    // const localData = localStorage.getItem('users');
-    // if(localData) this.users.push( JSON.parse(localData) );
+
+    if (this.dataServ.userHistorial.length > 0){
+      this.dataServ.userHistorial.forEach( user =>{
+        this.users.push(user);
+      });
+    }
     this.getNewUser();
   }
 
   getNewUser(){
 
     this.dataServ.getData().subscribe( user => {
-      console.log(user);
-      this.users.push(user);
+
+      if( this.users.length === 0 ){
+        this.users.push(user);
+        this.dataServ.sendToLocalStorage(user);
+
+      }else{
+
+        this.users.forEach( item => {
+          console.log(item.email);
+
+          if(item.email !== user.email){
+            this.users.push(user);
+            console.log(user);
+            this.dataServ.sendToLocalStorage(user);
+          }
+        });
+      }
 
     });
 
-    // let usersJson = JSON.stringify(this.users);
-    // localStorage.setItem('Users', usersJson);
-
+    // if( this.users.length > 0 ) this.dataServ.sendToLocalStorage( this.users );
   }
-
-
 
 }

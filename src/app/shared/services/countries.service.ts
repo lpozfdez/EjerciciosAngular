@@ -15,7 +15,7 @@ export class CountriesService {
   getCountries(): Observable<string[]>{
 
     return this.httpClient.get<Country[]>(`${this.baseUrl}/${this.namesUrl}`).pipe(
-      map( countries => countries.map( c => c.translations['spa'].common ) ),
+      map( countries => countries.map( c => c.translations['spa'].common ).sort() ),
     );
   }
 
