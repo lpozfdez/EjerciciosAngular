@@ -11,6 +11,7 @@ export class DataTableComponent implements OnInit, OnDestroy {
 
   public users: User[] = [];
 
+
   constructor( private dataServ: DataTransferService ){}
 
   ngOnDestroy(): void {
@@ -54,16 +55,22 @@ export class DataTableComponent implements OnInit, OnDestroy {
 
   }
 
-  onDelete( index: number ){
+  onDelete( index: number ): void{
 
     const deleted = this.users.splice(index,1);
-
-    this.dataServ.updateHistorial(deleted[0]);
-
-
-
+    this.dataServ.deleteToHistorial(deleted[0]);
     console.log(deleted[0]);
 
   }
+
+  onChange( index: number ): void{
+
+    const updated = this.users[index];
+    console.log(updated);
+    this.dataServ.sendEditUser(updated);
+
+  }
+
+
 
 }

@@ -7,11 +7,16 @@ export class DataTransferService {
 
   private _dataSubject = new Subject<User>();
   private _userHistorial: User[] = [];
+  private _editUserSubject = new Subject<User>();
 
   constructor() { this.getToLocalStorage() }
 
   get userHistorial(): User[] {
     return this._userHistorial;
+  }
+
+  get editUser(): Subject<User> {
+    return this._editUserSubject;
   }
 
   sendData( data: User ): void{
@@ -34,27 +39,6 @@ export class DataTransferService {
 
   }
 
-
-  // sendToLocalStorage(user: User): void {
-
-  //   if (this._userHistorial.length === 0) {
-
-  //     this._userHistorial.push(user);
-
-  //   } else {
-
-  //     const userExists = this._userHistorial.filter(u => u.email.toLowerCase().localeCompare(user.email.trim().toLowerCase()));
-  //     console.log( userExists);
-
-  //     if (userExists.length === 0 ){
-  //       this._userHistorial.push(user);
-  //       localStorage.setItem('users', JSON.stringify(this._userHistorial));
-  //     }
-
-  //   }
-
-  // }
-
   sendToLocalStorage(user: User): void {
 
     const userExists = this._userHistorial.some(u =>
@@ -68,7 +52,7 @@ export class DataTransferService {
 
   }
 
-  updateHistorial( user: User ): void{
+  deleteToHistorial( user: User ): void{
     const userDeleted = this._userHistorial.indexOf(user);
 
     this._userHistorial.splice(userDeleted,1);
@@ -79,5 +63,12 @@ export class DataTransferService {
 
   }
 
+  sendEditUser(user: User): void {
+    this._editUserSubject.next(user);
+  }
+
+  getEditedUser(): Subject<User>{
+    return this._editUserSubject;
+  }
 
 }

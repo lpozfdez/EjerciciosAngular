@@ -30,10 +30,16 @@ export class RegisterComponent implements OnInit{
     ]
   });
 
-  constructor(private fb: FormBuilder, private countriesServ:CountriesService, private validatorsServ: ValidatorsService, private dataServ: DataTransferService ) {}
+  constructor(
+    private fb: FormBuilder,
+    private countriesServ:CountriesService,
+    private validatorsServ: ValidatorsService,
+    private dataServ: DataTransferService
+  ) {}
 
   ngOnInit(): void {
     this.getCountries();
+    this.editUser();
   }
 
   getCountries():void {
@@ -69,6 +75,24 @@ export class RegisterComponent implements OnInit{
 
     //Limpiamos el formulario
     this.myForm.reset();
+
+  }
+
+  editUser(): void{
+
+    this.dataServ.getEditedUser().subscribe(user => {
+      this.myForm.patchValue({
+        name: user.name,
+        password: user.password,
+        password2: user.password,
+        email: user.email,
+        offerts: user.suscription,
+        country: user.country,
+        city: user.city,
+      });
+    });
+
+    //TODO hacer que lo editado se guarde de nuevo
 
   }
 
