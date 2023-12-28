@@ -41,7 +41,7 @@ export class DataTableComponent implements OnInit, OnDestroy {
         const userExists = this.users.filter(item => item.email === user.email);
         console.log(userExists);
 
-        if (!userExists) {
+        if (userExists.length === 0) {
           this.users.push(user);
           this.dataServ.sendToLocalStorage(user);
         }else{
@@ -56,9 +56,13 @@ export class DataTableComponent implements OnInit, OnDestroy {
 
   onDelete( index: number ){
 
-
     const deleted = this.users.splice(index,1);
-    console.log(deleted);
+
+    this.dataServ.updateHistorial(deleted[0]);
+
+
+
+    console.log(deleted[0]);
 
   }
 
