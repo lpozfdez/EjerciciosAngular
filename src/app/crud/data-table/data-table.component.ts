@@ -27,30 +27,39 @@ export class DataTableComponent implements OnInit, OnDestroy {
     this.getNewUser();
   }
 
-  getNewUser(){
+  getNewUser(): void {
 
-    this.dataServ.getData().subscribe( user => {
+    this.dataServ.getData().subscribe(user => {
 
-      if( this.users.length === 0 ){
+      if (this.users.length === 0) {
+
         this.users.push(user);
         this.dataServ.sendToLocalStorage(user);
 
-      }else{
+      } else {
 
-        this.users.forEach( item => {
-          console.log(item.email);
+        const userExists = this.users.filter(item => item.email === user.email);
+        console.log(userExists);
 
-          if(item.email !== user.email){
-            this.users.push(user);
-            console.log(user);
-            this.dataServ.sendToLocalStorage(user);
-          }
-        });
+        if (!userExists) {
+          this.users.push(user);
+          this.dataServ.sendToLocalStorage(user);
+        }else{
+          alert(`Ya existe un usuario con el email ${user.email}`);
+        }
+
       }
 
     });
 
-    // if( this.users.length > 0 ) this.dataServ.sendToLocalStorage( this.users );
+  }
+
+  onDelete( index: number ){
+
+
+    const deleted = this.users.splice(index,1);
+    console.log(deleted);
+
   }
 
 }

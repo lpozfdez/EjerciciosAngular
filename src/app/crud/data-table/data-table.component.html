@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users" >
+      <tr *ngFor="let user of users; let ind=index" >
         <td> {{ user.name }} </td>
         <td> {{ user.email }} </td>
         <td>
@@ -23,7 +23,7 @@
         </td>
         <td> {{ user.country }} </td>
         <td> {{ user.city }} </td>
-        <td> <i class="fas fa-pencil-alt"></i><i class="fas fa-trash-alt"></i></td>
+        <td> <i class="fas fa-pencil-alt"></i> &nbsp; <i class="fas fa-trash-alt"(click)="onDelete(ind)" ></i></td>
       </tr>
     </tbody>
 

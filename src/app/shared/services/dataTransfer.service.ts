@@ -23,50 +23,36 @@ export class DataTransferService {
   }
 
   getToLocalStorage(): void {
+
     const localData = localStorage.getItem('users');
-
     if(!localData) return;
-
     const localDataParse: User[] = JSON.parse(localData);
 
-    localDataParse.forEach( (user) => {
+    localDataParse.forEach( (user: User) => {
       this._userHistorial.push(user);
     });
 
-    console.log(this._userHistorial);
-
   }
 
-  // getToLocalStorage(): User[] {
-  //   const localData = localStorage.getItem('users');
 
-  //   if(!localData) return [];
+  sendToLocalStorage(user: User): void {
 
-  //   const localDataParse: User[] = JSON.parse(localData);
+    if (this._userHistorial.length === 0) {
 
-  //   localDataParse.forEach( (user) => {
-  //     if(!this._userHistorial.includes(user)) this._userHistorial.push(user);
-  //   });
+      this._userHistorial.push(user);
 
-  //   if(this._userHistorial.length === 0) return [];
+    } else {
 
-  //   return this._userHistorial;
-  // }
+      const userExists = this._userHistorial.filter(u => u.email.toLowerCase().localeCompare(user.email.trim().toLowerCase()));
+      console.log( userExists);
 
-  // sendToLocalStorage( users: User[] ): void{
-  //   users.forEach( user => {
-  //     console.log(user);
-  //     this._userHistorial.push(user);
-  //   } );
+      if (!userExists){
+        this._userHistorial.push(user);
+        localStorage.setItem('users', JSON.stringify(this._userHistorial));
+      }
 
-  //   if(this._userHistorial.length > 0) localStorage.setItem('users', JSON.stringify(this._userHistorial));
-  // }
+    }
 
-  sendToLocalStorage(user: User): void{
-
-    if(!this._userHistorial.includes(user)) this._userHistorial.push(user);
-
-    localStorage.setItem('users', JSON.stringify(this._userHistorial));
   }
 
 
