@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, tap } from 'rxjs';
 import { User } from 'src/app/crud/interfaces/user.interface';
 
 @Injectable({providedIn: 'root'})
@@ -7,17 +7,19 @@ export class DataTransferService {
 
   private _dataSubject = new Subject<User>();
   private _userHistorial: User[] = [];
-  private _editUserSubject = new Subject<User>();
 
-  constructor() { this.getToLocalStorage() }
+  private _editUserSubject = new Subject<User>();
+  private _dataOrigin = new Subject<string>();
+
+  constructor(){
+    this.getToLocalStorage()
+  }
 
   get userHistorial(): User[] {
     return this._userHistorial;
   }
 
-  get editUser(): Subject<User> {
-    return this._editUserSubject;
-  }
+  //Transferencia dde datos registro-tabla
 
   sendData( data: User ): void{
     this._dataSubject.next(data);
@@ -26,6 +28,8 @@ export class DataTransferService {
   getData(): Subject<User>{
     return this._dataSubject;
   }
+
+  //LocalStorage
 
   getToLocalStorage(): void {
 
@@ -52,6 +56,8 @@ export class DataTransferService {
 
   }
 
+  //Borrado de usuarios
+
   deleteToHistorial( user: User ): void{
     const userDeleted = this._userHistorial.indexOf(user);
 
@@ -63,12 +69,39 @@ export class DataTransferService {
 
   }
 
+  //Edición de usurios
+
   sendEditUser(user: User): void {
     this._editUserSubject.next(user);
   }
 
-  getEditedUser(): Subject<User>{
+  getEditedUser(): Subject<User> {
     return this._editUserSubject;
+  }
+
+  setDataOrigin( origin: string ){
+    this._dataOrigin.next(origin);
+  }
+
+  get dataOrigin(): Subject<string> {
+    return this._dataOrigin;
+  }
+
+  sendEditToLocalStorage(user: User, index: number): void {
+
+    this._userHistorial[index]= {
+      name: user.name,
+      city: user.city,
+      email: user.email,
+      password: user.password,
+      country: user.country,
+      suscription: user.suscription,
+    }
+
+    console.log(this._userHistorial[index]);
+
+    localStorage.setItem('users', JSON.stringify(this._userHistorial));
+
   }
 
 }

@@ -63,11 +63,35 @@ export class DataTableComponent implements OnInit, OnDestroy {
 
   }
 
-  onChange( index: number ): void{
+  onEdit( index: number ): void{
 
     const updated = this.users[index];
-    console.log(updated);
+
+    this.dataServ.setDataOrigin("tabla");
     this.dataServ.sendEditUser(updated);
+
+    this.getEditedUser(index);
+
+  }
+
+  getEditedUser( index: number ): void{
+
+    this.dataServ.getEditedUser().subscribe( userUpdated => {
+
+      this.users[index] = {
+        name: userUpdated.name,
+        city: userUpdated.city,
+        email: userUpdated.email,
+        password: userUpdated.password,
+        country: userUpdated.country,
+        suscription: userUpdated.suscription,
+      }
+
+      //console.log(this.users[index]);
+
+      this.dataServ.sendEditToLocalStorage( this.users[index], index );
+
+    });
 
   }
 

@@ -14,6 +14,7 @@ import { DataTransferService } from 'src/app/shared/services/dataTransfer.servic
 export class RegisterComponent implements OnInit{
 
   public allCountries?: string[];
+  public dataOrigin = '';
 
   public myForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
@@ -69,8 +70,7 @@ export class RegisterComponent implements OnInit{
       city: this.myForm.value['city'],
     };
 
-    console.log(user)
-
+    this.dataServ.setDataOrigin("registro");
     this.dataServ.sendData(user);
 
     //Limpiamos el formulario
@@ -92,8 +92,39 @@ export class RegisterComponent implements OnInit{
       });
     });
 
-    //TODO hacer que lo editado se guarde de nuevo
+    this.dataServ.dataOrigin.subscribe( origin => {
+      this.dataOrigin = origin;
+      console.log(origin);
+    });
 
+  }
+
+  onEdit(){
+
+    if(this.myForm.invalid) {
+      this.myForm.markAllAsTouched();
+      return;
+    }
+
+    const user: User = {
+      name: this.myForm.value['name'],
+      password: this.myForm.value['password'],
+      email: this.myForm.value['email'],
+      suscription: this.myForm.value['offerts'],
+      country: this.myForm.value['country'],
+      city: this.myForm.value['city'],
+    };
+
+    this.dataServ.sendEditUser(user);
+
+    this.dataOrigin = '';
+    this.myForm.reset();
+
+  }
+
+  cancelAction(){
+    this.dataOrigin = '';
+    this.myForm.reset();
   }
 
 }

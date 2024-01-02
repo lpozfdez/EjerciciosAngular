@@ -58,14 +58,12 @@
       <span class="form-text text-danger" *ngIf="isValidField('city')">Este campo es requerido</span>
     </div>
 
-    <button class="btn btn-primary" type="submit ">Crear</button>
+    <div class="mb-3 col d-flex justify-content-between">
+      <button *ngIf="dataOrigin !== 'tabla'" class="btn btn-primary" type="submit">Crear</button>
+      <button *ngIf="dataOrigin === 'tabla'" class="btn btn-primary " type="button" (click)="onEdit()" >Actualizar</button>
+      <button *ngIf="dataOrigin === 'tabla'" class="btn btn-secondary " type="button" (click)="cancelAction()" >Cancelar</button>
+    </div>
 
   </form>
 
-
-<!-- <h1>Formulario:</h1>
-
-<code> {{myForm.value| json}} </code>
-
-<p>Is form valid: {{myForm.valid}}</p> -->
 
