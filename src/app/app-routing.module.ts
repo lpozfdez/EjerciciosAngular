@@ -4,6 +4,7 @@ import { DisplayComponent } from './display/components/display/display.component
 import { LayoutComponent } from './comunication/components/layout/layout.component';
 import { CrudLayoutComponent } from './crud/layout/crud-layout.component';
 import { SearchBoxComponent } from './search-university/components/search-box/search-box.component';
+import { LightSwitchComponent } from './light-switch/components/light-switch/light-switch.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'university' ,
     component: SearchBoxComponent
+  },
+  {
+    path: 'lightSwitch' ,
+    component: LightSwitchComponent
   },
   {
     path: '**',

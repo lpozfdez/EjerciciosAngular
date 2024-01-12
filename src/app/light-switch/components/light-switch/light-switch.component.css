@@ -1,0 +1,16 @@
+.box{
+  width: 50px;
+  height: 200px;
+  background-color: rgb(39, 36, 36);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly
+}
+
+.light{
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-color: grey;
+}
