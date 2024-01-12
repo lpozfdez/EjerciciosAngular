@@ -10,6 +10,7 @@ import { DisplayModule } from './display/display.module';
 import { SharedModule } from './shared/shared.module';
 import { ComunicationModule } from './comunication/comunication.module';
 import { CrudModule } from './crud/crud.module';
+import { SearchUniversityModule } from './search-university/search-university.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CrudModule } from './crud/crud.module';
     SharedModule,
     ComunicationModule,
     CrudModule,
+    SearchUniversityModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
