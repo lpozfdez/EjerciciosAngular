@@ -1,5 +1,5 @@
-.box{
-  width: 50px;
+.lightSwitch{
+  width: 60px;
   height: 200px;
   background-color: rgb(39, 36, 36);
   display: flex;
@@ -13,4 +13,35 @@
   height: 40px;
   border-radius: 100px;
   background-color: grey;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+
+}
+
+.red {
+  animation: changeColor1 6s infinite;
+}
+
+.yellow {
+  animation: changeColor2 6s infinite;
+}
+
+.green {
+  animation: changeColor3 6s infinite;
+}
+
+
+@keyframes changeColor1 {
+  0%, 50% { background-color: red; box-shadow: 0 0 20px 10px red;}
+  50.1%, 100% { background-color: gray;box-shadow: none; }
+}
+
+@keyframes changeColor2 {
+  0%, 50% { background-color: gray;box-shadow: none;}
+  50.1%, 75% { background-color: yellow; box-shadow: 0 0 20px 10px yellow;}
+  75.1%, 100% { background-color: gray;box-shadow: none;}
+}
+
+@keyframes changeColor3 {
+  0%, 75% { background-color: gray; box-shadow: none;}
+  75.1%, 100% { background-color: rgb(23, 243, 23); box-shadow: 0 0 20px 10px rgb(8, 238, 8);}
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlerComponent } from './components/controler/controler.component';
 import { LightSwitchComponent } from './components/light-switch/light-switch.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,8 @@ import { LightSwitchComponent } from './components/light-switch/light-switch.com
     ControlerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class LightSwitchModule { }

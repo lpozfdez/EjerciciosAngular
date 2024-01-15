@@ -1,9 +1,12 @@
 <h4>Semáforo</h4>
 <hr>
-<div class="box">
 
-  <div class="light" ></div>
-  <div class="light" ></div>
-  <div class="light" ></div>
+<div class="lightSwitch">
+
+  <div class="light" [ngClass]="{'red': isOn}"></div>
+  <div class="light" [ngClass]="{'yellow': isOn}"></div>
+  <div class="light" [ngClass]="{'green': isOn}"></div>
 
 </div>
+
+<lightSwitch-controler (isOnChange)="onIsOnChange($event)" ></lightSwitch-controler>

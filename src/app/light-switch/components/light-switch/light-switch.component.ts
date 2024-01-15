@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class LightSwitchComponent {
 
+  public isOn: boolean = false;
+
+  onIsOnChange(value: boolean) {
+    this.isOn = value;
+  }
+
 }

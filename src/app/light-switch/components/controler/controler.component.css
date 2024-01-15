@@ -1,0 +1,12 @@
+.espaciador{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.normal-text {
+  font-weight: normal;
+}

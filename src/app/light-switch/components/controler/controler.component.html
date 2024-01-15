@@ -1,1 +1,18 @@
-<p>controler works!</p>
+<h5>Controlador</h5>
+
+<div class="col-12">
+
+  <select name="color" id="color">
+    <option value="rojo">rojo</option>
+    <option value="amarillo">amarillo</option>
+    <option value="verde">verde</option>
+  </select>
+
+  <span class="espaciador"></span>
+
+  <input type="checkbox" [(ngModel)]="isOn" (change)="onCheckboxChange()">
+  <label [ngClass]="{'bold-text': isOn, 'normal-text': !isOn}" for="">Encendido</label>/
+  <label [ngClass]="{'bold-text': !isOn, 'normal-text': isOn}" for="">Apagado</label>
+
+
+</div>

@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { ComunicationModule } from './comunication/comunication.module';
 import { CrudModule } from './crud/crud.module';
 import { SearchUniversityModule } from './search-university/search-university.module';
+import { LightSwitchModule } from './light-switch/light-switch.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SearchUniversityModule } from './search-university/search-university.mo
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     DisplayModule,
     SharedModule,
@@ -26,7 +28,8 @@ import { SearchUniversityModule } from './search-university/search-university.mo
     SearchUniversityModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LightSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
