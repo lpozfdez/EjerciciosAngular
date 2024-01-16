@@ -3,9 +3,9 @@
 
 <div class="lightSwitch">
 
-  <div class="light" [ngClass]="{'rojo': isOn}" (animationiteration)="onChangeColour($event)"></div>
-  <div class="light" [ngClass]="{'amarillo': isOn}" (animationiteration)="onChangeColour($event)"></div>
-  <div class="light" [ngClass]="{'verde': isOn}" (animationiteration)="onChangeColour($event)"></div>
+  <div class="light" [ngClass]="{'rojo': isOn && colorSelected === 'rojo'}" ></div>
+  <div class="light" [ngClass]="{'amarillo': isOn && colorSelected === 'amarillo'}" ></div>
+  <div class="light" [ngClass]="{'verde': isOn && colorSelected === 'verde'}" ></div>
 
 </div>
 

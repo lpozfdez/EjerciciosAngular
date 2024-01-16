@@ -18,6 +18,22 @@
 }
 
 .rojo {
+  background-color: red;
+  box-shadow: 0 0 20px 10px red;
+}
+
+.amarillo {
+  background-color: yellow;
+  box-shadow: 0 0 20px 10px yellow;
+}
+
+.verde {
+  background-color: rgb(23, 243, 23);
+  box-shadow: 0 0 20px 10px rgb(8, 238, 8);
+}
+
+/*
+.rojo {
   animation: changeColor1 6s infinite;
 }
 
@@ -44,4 +60,4 @@
 @keyframes changeColor3 {
   0%, 75% { background-color: gray; box-shadow: none;}
   75.1%, 100% { background-color: rgb(23, 243, 23); box-shadow: 0 0 20px 10px rgb(8, 238, 8);}
-}
+} */
