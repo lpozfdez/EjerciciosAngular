@@ -1,3 +1,16 @@
 <h4>Buscar universidades</h4>
 <hr>
-<input type="text" class="col-12">
+
+<ul class="menu col-8">
+  <li><button (click)="searchSpainUniversity()" >España</button></li>
+  <li><button>Reino Unido</button></li>
+  <li><button>Portugal</button></li>
+  <li><input type="text" class="col-12" (keyup.enter)="searchUniversity()" #txtTagInput></li>
+</ul>
+
+
+<div class="container">
+  <ul>
+    <li *ngFor="let university of universitiesList" ></li>
+  </ul>
+</div>

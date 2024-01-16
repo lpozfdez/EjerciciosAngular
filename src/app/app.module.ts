@@ -29,7 +29,7 @@ import { LightSwitchModule } from './light-switch/light-switch.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LightSwitchModule
+    LightSwitchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
