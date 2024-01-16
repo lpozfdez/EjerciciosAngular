@@ -8,9 +8,15 @@ import { Component } from '@angular/core';
 export class LightSwitchComponent {
 
   public isOn: boolean = false;
+  public colorSelected: string = '';
 
   onIsOnChange(value: boolean) {
     this.isOn = value;
+  }
+
+  onChangeColour(event: AnimationEvent){
+    this.colorSelected = (event.target as HTMLElement).classList[1];
+    console.log(this.colorSelected)
   }
 
 }

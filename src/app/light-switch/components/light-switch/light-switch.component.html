@@ -3,10 +3,13 @@
 
 <div class="lightSwitch">
 
-  <div class="light" [ngClass]="{'red': isOn}"></div>
-  <div class="light" [ngClass]="{'yellow': isOn}"></div>
-  <div class="light" [ngClass]="{'green': isOn}"></div>
+  <div class="light" [ngClass]="{'rojo': isOn}" (animationiteration)="onChangeColour($event)"></div>
+  <div class="light" [ngClass]="{'amarillo': isOn}" (animationiteration)="onChangeColour($event)"></div>
+  <div class="light" [ngClass]="{'verde': isOn}" (animationiteration)="onChangeColour($event)"></div>
 
 </div>
 
-<lightSwitch-controler (isOnChange)="onIsOnChange($event)" ></lightSwitch-controler>
+<lightSwitch-controler
+    (isOnChange)="onIsOnChange($event)"
+    [selectedColor]="colorSelected"
+></lightSwitch-controler>

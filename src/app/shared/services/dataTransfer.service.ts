@@ -11,6 +11,7 @@ export class DataTransferService {
   private _editUserSubject = new Subject<User>();
   private _dataOrigin = new Subject<string>();
 
+
   constructor(){
     this.getToLocalStorage()
   }

@@ -2,10 +2,8 @@
 
 <div class="col-12">
 
-  <select name="color" id="color">
-    <option value="rojo">rojo</option>
-    <option value="amarillo">amarillo</option>
-    <option value="verde">verde</option>
+  <select name="color" id="color" [(ngModel)]="selectedColor" >
+    <option *ngFor="let color of opcionesColores" [value]="color" >{{ color }}</option>
   </select>
 
   <span class="espaciador"></span>

@@ -17,15 +17,15 @@
 
 }
 
-.red {
+.rojo {
   animation: changeColor1 6s infinite;
 }
 
-.yellow {
+.amarillo {
   animation: changeColor2 6s infinite;
 }
 
-.green {
+.verde {
   animation: changeColor3 6s infinite;
 }
 
