@@ -3,14 +3,14 @@
 
 <ul class="menu col-8">
   <li><button (click)="searchSpainUniversity()" >España</button></li>
-  <li><button>Reino Unido</button></li>
-  <li><button>Portugal</button></li>
-  <li><input type="text" class="col-12" (keyup.enter)="searchUniversity()" #txtTagInput></li>
+  <li><button (click)="searchRUnidoUniversity()" >Reino Unido</button></li>
+  <li><button (click)="searchPortugalUniversity()" >Portugal</button></li>
+  <li><input type="text" class="col-12" (keyup.enter)="searchUniversity(txtTagInput.value)" #txtTagInput></li>
 </ul>
 
 
 <div class="container">
   <ul>
-    <li *ngFor="let university of universitiesList" ></li>
+    <li *ngFor="let university of universitiesList" >{{university}}</li>
   </ul>
 </div>
